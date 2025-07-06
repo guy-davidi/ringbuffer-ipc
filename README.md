@@ -1,22 +1,27 @@
 # Ring Buffer IPC
 
 A lock-free ring buffer implementation for inter-CPU communication using shared memory.
-Designed for embedded or low-level systems where atomic instructions and memory barriers are critical.
+Includes unit tests (Unity framework) and a real shared-memory demo (producer/consumer).
 
-## Features
-
-- Single Producer / Single Consumer
-- Lock-free, uses memory barriers
-- Suitable for shared DDR with per-core caches
-- Testable via pthread simulation on Linux
-
-## Build and Run
+## Build
 
 ```bash
 make
+```
+
+## Run unit tests
+
+```bash
 ./ring_buffer_test
 ```
 
-## License
+## Run real-world demo
 
-GPL-2.0-only
+Terminal 1:
+```bash
+./demo/shm_writer
+```
+Terminal 2:
+```bash
+./demo/shm_reader
+```

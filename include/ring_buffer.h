@@ -13,6 +13,7 @@
 #define RING_BUFFER_H
 
 #include <stdint.h>
+#include <stddef.h>
 
 #define RING_BUFFER_SIZE 1024
 #define RING_BUFFER_OK    0
@@ -31,6 +32,11 @@ extern "C" {
 
 int ring_buffer_send(ring_buffer_t *buffer, uint8_t val);
 int ring_buffer_recv(ring_buffer_t *buffer, uint8_t *out);
+int ring_buffer_send_bulk(ring_buffer_t *buffer, const uint8_t *src, int len);
+int ring_buffer_recv_bulk(ring_buffer_t *buffer, uint8_t *dst, int len);
+void ring_buffer_reset(ring_buffer_t *buffer);
+int ring_buffer_used(const ring_buffer_t *buffer);
+int ring_buffer_free(const ring_buffer_t *buffer);
 
 #ifdef __cplusplus
 }
